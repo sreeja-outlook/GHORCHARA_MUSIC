@@ -45,23 +45,25 @@ window.addEventListener('scroll', () => {
 
 // Gallery images
 const galleryImages = [
-    'https://source.unsplash.com/random/800x600/?concert',
-    'https://source.unsplash.com/random/800x600/?band-performance',
-    'https://source.unsplash.com/random/800x600/?music-studio',
-    'https://source.unsplash.com/random/800x600/?rock-band',
-    'https://source.unsplash.com/random/800x600/?live-music',
-    'https://source.unsplash.com/random/800x600/?band-rehearsal'
+    'assets/gallery1.jpg',
+    'assets/gallery3.jpg',
+    'assets/gallery2.jpg',
 ];
 
-// Populate gallery
-const galleryGrid = document.querySelector('.gallery-grid');
-galleryImages.forEach(image => {
-    const galleryItem = document.createElement('div');
-    galleryItem.className = 'gallery-item';
-    galleryItem.style.backgroundImage = `url(${image})`;
-    galleryItem.style.backgroundSize = 'cover';
-    galleryItem.style.backgroundPosition = 'center';
-    galleryGrid.appendChild(galleryItem);
+// Wait for DOM to be fully loaded
+document.addEventListener('DOMContentLoaded', () => {
+    // Populate gallery
+    const galleryGrid = document.querySelector('.gallery-grid');
+    if (galleryGrid) {
+        galleryImages.forEach(image => {
+            const galleryItem = document.createElement('div');
+            galleryItem.className = 'gallery-item';
+            galleryItem.style.backgroundImage = `url(${image})`;
+            galleryItem.style.backgroundSize = 'cover';
+            galleryItem.style.backgroundPosition = 'center';
+            galleryGrid.appendChild(galleryItem);
+        });
+    }
 });
 
 // Tour dates
@@ -72,17 +74,22 @@ const tourDates = [
     { date: '2024-05-15', venue: 'Nazrul Mancha', city: 'Kolkata' }
 ];
 
-// Populate tour dates
-const tourDatesContainer = document.querySelector('.tour-dates');
-tourDates.forEach(tour => {
-    const tourCard = document.createElement('div');
-    tourCard.className = 'tour-card';
-    tourCard.innerHTML = `
-        <h3>${new Date(tour.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</h3>
-        <p>${tour.venue}</p>
-        <p>${tour.city}</p>
-    `;
-    tourDatesContainer.appendChild(tourCard);
+// Wait for DOM to be fully loaded
+document.addEventListener('DOMContentLoaded', () => {
+    // Populate tour dates
+    const tourDatesContainer = document.querySelector('.tour-dates');
+    if (tourDatesContainer) {
+        tourDates.forEach(tour => {
+            const tourCard = document.createElement('div');
+            tourCard.className = 'tour-card';
+            tourCard.innerHTML = `
+                <h3>${new Date(tour.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</h3>
+                <p>${tour.venue}</p>
+                <p>${tour.city}</p>
+            `;
+            tourDatesContainer.appendChild(tourCard);
+        });
+    }
 });
 
 // Merch items
@@ -93,76 +100,62 @@ const merchItems = [
     { name: 'Band Poster', price: '₹499', image: 'https://source.unsplash.com/random/400x400/?poster' }
 ];
 
-// Populate merch store
-const merchGrid = document.querySelector('.merch-grid');
-merchItems.forEach(item => {
-    const merchCard = document.createElement('div');
-    merchCard.className = 'merch-card';
-    merchCard.innerHTML = `
-        <div class="merch-image" style="background-image: url(${item.image})"></div>
-        <h3>${item.name}</h3>
-        <p>${item.price}</p>
-        <button>Add to Cart</button>
-    `;
-    merchGrid.appendChild(merchCard);
+// Wait for DOM to be fully loaded
+document.addEventListener('DOMContentLoaded', () => {
+    // Populate merch store
+    const merchGrid = document.querySelector('.merch-grid');
+    if (merchGrid) {
+        merchItems.forEach(item => {
+            const merchCard = document.createElement('div');
+            merchCard.className = 'merch-card';
+            merchCard.innerHTML = `
+                <div class="merch-image" style="background-image: url(${item.image})"></div>
+                <h3>${item.name}</h3>
+                <p>${item.price}</p>
+                <button>Add to Cart</button>
+            `;
+            merchGrid.appendChild(merchCard);
+        });
+    }
 });
 
 // Contact Form Handling
 const contactForm = document.getElementById('contact-form');
 
-contactForm.addEventListener('submit', async (e) => {
+contactForm.addEventListener('submit', function(e) {
     e.preventDefault();
-
-    // Get form data
-    const formData = new FormData(contactForm);
-    const data = {
-        name: formData.get('name'),
-        email: formData.get('email'),
-        phone: formData.get('phone'),
-        message: formData.get('message')
-    };
-
-    // Show loading state
+    
+    // Show sending state
     const submitBtn = contactForm.querySelector('.submit-btn');
     const originalBtnText = submitBtn.innerHTML;
     submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
     submitBtn.disabled = true;
 
-    try {
-        // Using EmailJS to send the email
-        emailjs.init("YOUR_EMAILJS_USER_ID"); // You'll need to get this from EmailJS
-
-        const response = await emailjs.send("YOUR_EMAILJS_SERVICE_ID", "YOUR_EMAILJS_TEMPLATE_ID", {
-            to_email: "ghorcharamusic@gmail.com",
-            from_name: data.name,
-            from_email: data.email,
-            phone: data.phone,
-            message: data.message
-        });
-
-        if (response.status === 200) {
-            // Show success message
-            submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
-            contactForm.reset();
-            
-            // Reset button after 3 seconds
-            setTimeout(() => {
-                submitBtn.innerHTML = originalBtnText;
-                submitBtn.disabled = false;
-            }, 3000);
-        }
-    } catch (error) {
-        // Show error message
-        submitBtn.innerHTML = '<i class="fas fa-exclamation-circle"></i> Error!';
-        
-        // Reset button after 3 seconds
+    // Get form data
+    const formData = new FormData(contactForm);
+    
+    // Submit the form using fetch
+    fetch(contactForm.action, {
+        method: 'POST',
+        mode: 'no-cors', // This is important for Google Forms
+        body: formData
+    })
+    .then(() => {
+        // Show success message
+        submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent';
+        contactForm.reset();
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        submitBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Error sending message';
+    })
+    .finally(() => {
+        // Reset button after a delay
         setTimeout(() => {
             submitBtn.innerHTML = originalBtnText;
             submitBtn.disabled = false;
         }, 3000);
-        
-        console.error('Error sending email:', error);
-    }
+    });
 });
 
 // Music player functionality
@@ -177,8 +170,7 @@ musicPlayer.addEventListener('click', () => {
     } else {
         audio.play();
         musicPlayer.innerHTML = '<i class="fas fa-pause"></i>';
-    }
-    isPlaying = !isPlaying;
+    }    isPlaying = !isPlaying;
 });
 
 // Intersection Observer for animations

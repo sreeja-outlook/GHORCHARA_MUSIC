@@ -1,0 +1,266 @@
+:root {
+    --primary-color: #0a0a0a;
+    --secondary-color: #1a1a1a;
+    --accent-color: #ffd700;
+    --text-color: #ffffff;
+    --text-secondary: #b3b3b3;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --glow-effect: 0 0 20px rgba(255, 215, 0, 0.3);
+    --glass-bg: rgba(10, 10, 10, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.coming-soon-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    position: relative;
+    background: linear-gradient(45deg, rgba(0,0,0,0.9), rgba(0,0,0,0.7));
+}
+
+.back-home {
+    position: fixed;
+    top: 2rem;
+    left: 2rem;
+    color: var(--text-color);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.1rem;
+    transition: var(--transition);
+    z-index: 10;
+}
+
+.back-home:hover {
+    color: var(--accent-color);
+    transform: translateX(-5px);
+}
+
+.content {
+    text-align: center;
+    z-index: 2;
+    background: var(--glass-bg);
+    padding: 3rem;
+    border-radius: 20px;
+    border: 1px solid var(--glass-border);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    max-width: 800px;
+    width: 100%;
+}
+
+.title {
+    font-size: 4rem;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: var(--glow-effect);
+}
+
+.bengali-title {
+    font-family: 'Jaldi', sans-serif;
+    font-size: 3rem;
+    color: var(--text-color);
+    margin-bottom: 2rem;
+}
+
+.tour-teaser {
+    margin: 3rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.tour-teaser i {
+    font-size: 4rem;
+    color: var(--accent-color);
+}
+
+.tour-teaser p {
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+}
+
+.tour-info {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin: 3rem 0;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.info-item i {
+    font-size: 2rem;
+    color: var(--accent-color);
+}
+
+.info-item span {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.social-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1.8rem;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transition: var(--transition);
+    border: 1px solid var(--glass-border);
+}
+
+.social-links a:hover {
+    color: var(--accent-color);
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+    box-shadow: var(--glow-effect);
+}
+
+.notification-form {
+    margin-top: 3rem;
+}
+
+.notification-form h3 {
+    color: var(--text-color);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.notification-form form {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.notification-form input {
+    flex: 1;
+    padding: 1rem;
+    border: 1px solid var(--glass-border);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-color);
+    font-size: 1rem;
+}
+
+.notification-form input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+
+.notification-form button {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 10px;
+    background: var(--accent-color);
+    color: var(--primary-color);
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.notification-form button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--glow-effect);
+}
+
+.animated-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: 
+        radial-gradient(circle at 20% 20%, rgba(255, 215, 0, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 215, 0, 0.05) 0%, transparent 50%);
+    animation: pulse 8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+@media (max-width: 768px) {
+    .content {
+        padding: 2rem;
+    }
+
+    .title {
+        font-size: 3rem;
+    }
+
+    .bengali-title {
+        font-size: 2rem;
+    }
+
+    .tour-info {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .notification-form form {
+        flex-direction: column;
+    }
+
+    .notification-form button {
+        width: 100%;
+    }
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}

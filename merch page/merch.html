@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GHORCHARA - Official Merchandise</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="merch.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jaldi:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="../index.html">
+                    <img src="../assets/navbar_logo.jpg" alt="Ghorchara Music Logo" class="logo">
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html" class="nav-item">Home</a>
+                <a href="../index.html#about" class="nav-item">About</a>
+                <a href="../index.html#members" class="nav-item">Band</a>
+                <a href="../index.html#music" class="nav-item">Music</a>
+                <a href="../gallery page/gallery.html" class="nav-item">Gallery</a>
+                <a href="../index.html#tour" class="nav-item">Tour</a>
+                <a href="merch.html" class="nav-item active">Merch</a>
+                <a href="../index.html#contact" class="nav-item">Contact</a>
+            </div>
+            <div class="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+    <div class="overlay"></div>
+    <p><br><Br><br></p>
+
+    <!-- Hero Section -->
+    <section id="merch-hero" class="section">
+        <div class="hero-content">
+            <h1 class="section-title">Official Merchandise</h1>
+            <p class="tagline">Wear Your Rebellion</p>
+        </div>
+    </section>
+
+    <!-- Store Section -->
+    <section id="store" class="section">
+        <div class="container">
+            <!-- Filters and Sort -->
+            <div class="store-controls">
+                <div class="filters-header">
+                    <button class="filter-toggle" title="Toggle filters">
+                        <i class="fas fa-filter"></i> Filters
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="sort-controls">
+                        <select id="sort-by" title="Sort products by">
+                            <option value="featured">Featured</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="newest">Newest</option>
+                            <option value="bestselling">Best Selling</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="filters collapsed">
+                    <div class="filter-group">
+                        <h3>Categories</h3>
+                        <div class="filter-options">
+                            <label><input type="checkbox" value="t-shirts"> T-Shirts</label>
+                            <label><input type="checkbox" value="hoodies"> Hoodies</label>
+                            <label><input type="checkbox" value="accessories"> Accessories</label>
+                            <label><input type="checkbox" value="collectibles"> Collectibles</label>
+                            <label><input type="checkbox" value="music"> Music</label>
+                        </div>
+                    </div>
+                    <div class="filter-group">
+                        <h3>Size</h3>
+                        <div class="filter-options">
+                            <label><input type="checkbox" value="s"> S</label>
+                            <label><input type="checkbox" value="m"> M</label>
+                            <label><input type="checkbox" value="l"> L</label>
+                            <label><input type="checkbox" value="xl"> XL</label>
+                            <label><input type="checkbox" value="xxl"> XXL</label>
+                        </div>
+                    </div>
+                    <div class="filter-group">
+                        <h3>Price Range</h3>
+                        <div class="price-slider">
+                            <label for="price-range">Price Range</label>
+                            <input type="range" min="0" max="5000" value="5000" class="price-range" id="price-range" title="Price range slider">
+                            <div class="price-values">
+                                <span>₹0</span>
+                                <span class="current-price">₹5000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="products-grid" id="products-container">
+                <!-- Products will be dynamically loaded here -->
+            </div>
+
+            <!-- Shopping Cart Preview -->
+            <div class="cart-preview" id="cart-preview">
+                <div class="cart-header">
+                    <h3>Shopping Cart</h3>
+                    <button class="close-cart" title="Close cart"><i class="fas fa-times" aria-hidden="true"></i><span class="sr-only">Close cart</span></button>
+                </div>
+                <div class="cart-items">
+                    <!-- Cart items will be dynamically loaded here -->
+                </div>
+                <div class="cart-footer">
+                    <div class="cart-total">
+                        <span>Total:</span>
+                        <span class="total-amount">₹0</span>
+                    </div>
+                    <button class="checkout-btn">Checkout</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="../assets/navbar_logo.jpg" alt="Ghorchara Music Logo" class="footer-logo">
+                    <p>© 2025 Ghorchara Music. All rights reserved.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h4>Quick Links</h4>
+                        <a href="../index.html#about">About Us</a>
+                        <a href="../index.html#music">Music</a>
+                        <a href="merch.html">Merchandise</a>
+                        <a href="../index.html#contact">Contact</a>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Follow Us</h4>
+                        <div class="social-links">
+                            <a href="#" title="Follow us on Facebook"><i class="fab fa-facebook" aria-hidden="true"></i><span class="sr-only">Facebook</span></a>
+                            <a href="#" title="Follow us on Instagram"><i class="fab fa-instagram" aria-hidden="true"></i><span class="sr-only">Instagram</span></a>
+                            <a href="#" title="Follow us on YouTube"><i class="fab fa-youtube" aria-hidden="true"></i><span class="sr-only">YouTube</span></a>
+                            <a href="#" title="Follow us on Spotify"><i class="fab fa-spotify" aria-hidden="true"></i><span class="sr-only">Spotify</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="merch.js"></script>
+</body>
+</html>
