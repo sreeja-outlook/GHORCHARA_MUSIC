@@ -282,16 +282,17 @@ body {
 
 /* About Section */
 .about-content {
-    display: grid;
-    grid-template-columns: 60% 40%;
-    gap: 4%;
+    display: flex;
     align-items: center;
-    max-width: 1140px;
-    margin-right: 10%;
-    padding: 20px 20px;
+    justify-content: center;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 1px;
+    gap: 10px;
 }
 
 .about-text {
+    flex: 6;
     padding: 30px;
     background: var(--glass-bg);
     border-radius: 15px;
@@ -299,6 +300,7 @@ body {
     border: 1px solid var(--glass-border);
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
+    text-align: left;
 }
 
 .about-text p {
@@ -309,14 +311,20 @@ body {
 }
 
 .about-image {
-    width: 500px;
-    height: 500px;
-    background: url('assets/tagline.jpg') center/cover no-repeat;
+    flex: 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 15px;
     box-shadow: var(--glass-shadow);
     transition: var(--transition);
     position: relative;
-    overflow: hidden;
+}
+
+.about-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
 }
 
 .about-image::before {
@@ -353,8 +361,8 @@ body {
     text-align: center;
     box-shadow: var(--glass-shadow);
     border: 1px solid var(--glass-border);
-    backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
     transition: var(--transition);
     position: relative;
     overflow: hidden;
@@ -449,8 +457,8 @@ body {
     border-radius: 20px;
     box-shadow: var(--glass-shadow);
     border: 1px solid var(--glass-border);
-    backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
 }
 
 .contact-info h3 {
@@ -573,8 +581,8 @@ body {
     color: var(--text-color);
     font-size: 1rem;
     transition: var(--transition);
-    backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
 }
 
 #contact-form textarea {
@@ -606,8 +614,8 @@ body {
     text-transform: uppercase;
     letter-spacing: 2px;
     box-shadow: var(--glass-shadow);
-    backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
 }
 
 .submit-btn:hover {
@@ -665,6 +673,88 @@ body {
     .submit-btn {
         padding: 12px 25px;
         font-size: 1rem;
+    }
+}
+
+/* New media query for screens smaller than 400px */
+@media (max-width: 400px) {
+    .about-text {
+        padding: 10px;
+        font-size: 0.95rem;
+    }
+    .about-content {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+        padding: 0 15px;
+    }
+    
+    .about-text {
+        text-align: center;
+        max-width: 100%;
+        padding: 25px;
+    }
+    
+    .about-image {
+        flex: none;
+        width: 100%;
+        max-width: 400px;
+        height: 300px;
+        margin: 0 auto;
+    }
+    .members-side-by-side {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .member-info {
+        padding: 10px;
+    }
+    .member-info h3 {
+        font-size: 1.2rem;
+    }
+    .member-info .role {
+        font-size: 0.9rem;
+    }
+    .member-image img {
+        width: 100%;
+        height: auto;
+        max-width: 220px;
+        margin: 0 auto;
+        display: block;
+    }
+}
+
+/* Tablet view adjustments */
+@media (max-width: 992px) and (min-width: 769px) {
+    .about-content {
+        gap: 40px;
+        padding: 0 30px;
+    }
+    
+    .about-text {
+        padding: 35px;
+        font-size: 1rem;
+    }
+    
+    .about-image {
+        flex: 0 0 350px;
+        height: 350px;
+    }
+}
+
+/* Small tablet adjustments */
+@media (max-width: 768px) and (min-width: 577px) {
+    .about-content {
+        padding: 0 25px;
+    }
+    
+    .about-text {
+        padding: 25px;
+    }
+    
+    .about-image {
+        max-width: 350px;
+        height: 280px;
     }
 }
 
@@ -1003,7 +1093,8 @@ footer::before {
     .about-content,
     .contact-content,
     .music-grid {
-        grid-template-columns: 1fr;
+        flex-direction: column;
+        gap: 30px;
     }
 
     .about-image {
@@ -1060,8 +1151,8 @@ footer::before {
     transition: var(--transition);
     box-shadow: var(--glass-shadow);
     border: 1px solid var(--glass-border);
-    backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
     height: 100%;
     display: flex;
     flex-direction: column;
