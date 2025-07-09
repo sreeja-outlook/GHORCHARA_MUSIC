@@ -119,44 +119,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Contact Form Handling
-const contactForm = document.getElementById('contact-form');
-
-contactForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    // Show sending state
-    const submitBtn = contactForm.querySelector('.submit-btn');
-    const originalBtnText = submitBtn.innerHTML;
-    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-    submitBtn.disabled = true;
-
-    // Get form data
-    const formData = new FormData(contactForm);
-    
-    // Submit the form using fetch
-    fetch(contactForm.action, {
-        method: 'POST',
-        mode: 'no-cors', // This is important for Google Forms
-        body: formData
-    })
-    .then(() => {
-        // Show success message
-        submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent';
-        contactForm.reset();
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        submitBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Error sending message';
-    })
-    .finally(() => {
-        // Reset button after a delay
-        setTimeout(() => {
-            submitBtn.innerHTML = originalBtnText;
-            submitBtn.disabled = false;
-        }, 3000);
-    });
-});
 
 // Music player functionality
 const musicPlayer = document.querySelector('.music-player');

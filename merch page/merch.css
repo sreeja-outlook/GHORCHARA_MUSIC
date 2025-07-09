@@ -1,8 +1,9 @@
 /* Merch Hero Section */
-#merch-hero {
+#merch-hero,
+#hero {
     min-height: 40vh;
     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-                url('../assets/gallery1.jpg') center/cover no-repeat;
+                url('../assets/banner.png') center/cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -10,7 +11,8 @@
     padding-top: 80px;
 }
 
-#merch-hero .section-title {
+#merch-hero .section-title,
+#hero .section-title {
     font-size: 4rem;
     color: var(--accent-color);
     margin-bottom: 1rem;
